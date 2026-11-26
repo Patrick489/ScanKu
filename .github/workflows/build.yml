@@ -5,15 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q ScanKu.zip
+      - run: unzip -q ScanPro.zip
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
       - run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null || true
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: 8.9 }
       - run: gradle assembleDebug
-        working-directory: ScanKu
+        working-directory: ScanPro
       - uses: actions/upload-artifact@v4
         with:
-          name: ScanKu-debug-apk
-          path: ScanKu/app/build/outputs/apk/debug/app-debug.apk
+          name: ScanPro-debug-apk
+          path: ScanPro/app/build/outputs/apk/debug/app-debug.apk
